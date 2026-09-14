@@ -76,7 +76,7 @@
   <header>
     <h1>Prioritizing Search Snippet Interventions</h1>
     <p><em>A Grouped Baseline and Random Forest Approach to CTR Opportunity Scoring</em></p>
-    <p><strong>Author:</strong> [Your Name] &bull; <strong>Date:</strong> September 2026</p>
+    <p><strong>Author:</strong> Jansen Lao &bull; <strong>Date:</strong> September 2026</p>
   </header>
 
   <section class="callout">
@@ -86,7 +86,17 @@
 
   <section>
     <h2>1. Introduction / Problem Statement</h2>
-    <p>[Content goes here]</p>
+    <p>Organic search portfolios generate massive volumes of daily performance data, making it difficult for content operations teams to allocate their limited editorial hours efficiently. This project provides <strong>directional decision-support</strong> for SEO editors by identifying the "Leaky Bucket" archetype: pages that have successfully achieved Page 1 search visibility but are under-capturing clicks relative to their position.</p>
+    
+    <p>We formalize this challenge as a prioritization problem. Rather than relying on random audits or gut feeling, we aim to answer: <em>Which specific URLs should a human editor look at first today?</em></p>
+    
+    <ul>
+      <li><strong>Unit of Analysis:</strong> Daily content performance (one row represents one piece of content on a specific day).</li>
+      <li><strong>The Output:</strong> A probability-ranked triage queue and content action playbook.</li>
+      <li><strong>The Human Action:</strong> An editor reviews the live Search Engine Results Page (SERP) for flagged URLs and adjusts the meta title and description to better align with user intent.</li>
+      <li><strong>The Cost of a Wrong Call:</strong> Wasting expensive editorial time attempting to "fix" a page that actually suffers from unfixable low intent (e.g., informational zero-click searches or navigational competitor brand queries).</li>
+      <li><strong>Why ML Helps:</strong> A daily data warehouse produces millions of rows. Machine learning reduces this noise into a sorted, evidence-backed list, ensuring human editors focus exclusively on the highest-probability opportunities.</li>
+    </ul>
   </section>
 
   <section>

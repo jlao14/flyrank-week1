@@ -1,9 +1,9 @@
 # Capstone Report — <your lane>
 
-- **Author:**
-- **Lane:**
-- **Repo:**
-- **Date:**
+- **Author:** Jansen Lao
+- **Lane:** CTR / Engagement Opportunity Scoring
+- **Repo:** https://github.com/jlao14/flyrank-week1/
+- **Date:** September 2026
 
 ## 1. Problem framing
 

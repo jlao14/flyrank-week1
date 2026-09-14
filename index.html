@@ -99,9 +99,16 @@
     </ul>
   </section>
 
-  <section>
+ <section>
     <h2>2. Data & Preprocessing</h2>
-    <p>[Content goes here]</p>
+    <p>The analysis relies on the public <code>FlyRank/internship-warehouse</code> dataset. We streamed a 10,000-row sample from the <code>fact_content_daily_performance</code> table, specifically isolating the February 2025 cohort to evaluate daily content performance metrics.</p>
+    
+    <ul>
+      <li><strong>Data Safety & Privacy:</strong> The export is strictly pseudonymized and public-safe. No client names, raw URLs, or private search queries are present in the dataset[cite: 4]. The <code>client_hash_id</code> was utilized exclusively as a grouping key for validation splits and was never fed to the model as a feature[cite: 4].</li>
+      <li><strong>Deliberate Exclusions (Leakage Prevention):</strong> To prevent label-derived feature leakage, the metrics used to calculate our target label—specifically <code>gsc_avg_position</code>, <code>gsc_clicks</code>, and <code>ctr</code>—were strictly excluded from the predictive feature vector[cite: 2, 4].</li>
+      <li><strong>Product Flag Exclusion:</strong> We also explicitly excluded internal downstream decision flags (e.g., <code>trend_direction</code> or <code>is_declining_label</code>) to ensure the model learned underlying search patterns rather than simply memorizing existing system rules[cite: 2, 4].</li>
+      <li><strong>Data Cleaning:</strong> Rows containing null values for position, impressions, or clicks were dropped, and the dataset was filtered to only include pages with greater than zero impressions to allow for accurate CTR calculations.</li>
+    </ul>
   </section>
 
   <section>

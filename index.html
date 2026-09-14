@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prioritizing Search Snippet Interventions — FlyRank Research</title>
+  <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+  <style>
+    body { max-width: 850px; font-size: 1.05rem; line-height: 1.65; }
+    img { max-width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 6px; margin: 1.5rem 0; }
+    table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+    th, td { padding: 0.75rem; border: 1px solid #cbd5e1; }
+    .callout { background: #f8fafc; border-left: 4px solid #3b82f6; padding: 1rem; margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prioritizing Search Snippet Interventions</h1>
+    <p><em>A Grouped Baseline and Random Forest Approach to CTR Opportunity Scoring</em></p>
+    <p><strong>Author:</strong> [Your Name] &bull; <strong>Date:</strong> September 2026</p>
+  </header>
+
+  <section class="callout">
+    <h3>Abstract</h3>
+    <p>High organic search visibility frequently fails to translate into proportional traffic capture, leaving content operations teams without an empirical framework to determine which Page 1 assets warrant immediate editorial intervention. To support this operational triage decision, we analyzed a daily performance slice from the FlyRank search warehouse, framing the task as a "which first?" ranking problem targeting pages with Page 1 placement (position <= 10) but observed click-through rates under 2.0%. We established a transparent, arithmetic rule-based baseline and evaluated it against a shallow Random Forest classifier using a strict client-grouped validation split (<code>GroupShuffleSplit</code>) on non-leaking features. In the evaluated split, the learned model converged with the heuristic baseline at Precision@50, leaning entirely on search impression volume due to zero-variance GA4 session signals in early warehouse cohorts. These results indicate that algorithmic scoring serves as an effective decision-support filter for editorial backlogs, though human verification of live search intent remains necessary to distinguish snippet mismatch from unfixable zero-click queries.</p>
+  </section>
+
+  <section>
+    <h2>1. Introduction / Problem Statement</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>2. Data & Preprocessing</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>3. Baseline</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>4. Methodology & Validation Design</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>5. Results & Baseline Comparison</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>6. Limitations & Honest Framing</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>7. Ranked Recommendations (Action Playbook)</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <section>
+    <h2>8. Reproducibility</h2>
+    <p>[Content goes here]</p>
+  </section>
+
+  <footer>
+    <hr>
+    <p>Built on the <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank ML Internship dataset</a>.</p>
+  </footer>
+</body>
+</html>

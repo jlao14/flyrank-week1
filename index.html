@@ -131,14 +131,38 @@
     <p><strong>Honest Validation Design:</strong> Standard random train/test splits are fundamentally dishonest for this dataset. Because the warehouse contains multiple daily records from the same clients, a random 80/20 split risks leaking a client's specific site-wide momentum from the training set into the test set. To rigorously validate the model's ability to generalize, we employed a <code>GroupShuffleSplit</code> grouped by <code>client_hash_id</code>. This ensures the model is evaluated exclusively on its ability to identify patterns on completely unseen client domains.</p>
   </section>
 
-  <section>
+ <section>
     <h2>5. Results & Baseline Comparison</h2>
-    <p>[Content goes here]</p>
+    <p>We evaluated the Random Forest model against our heuristic baseline using Precision@50 on the strict, client-grouped test split. The results showed that the algorithmic approach converged precisely with the heuristic baseline.</p>
+    
+    <ul>
+      <li><strong>Base Rate (Random Guess):</strong> 0.388</li>
+      <li><strong>Baseline (Heuristic):</strong> 0.400</li>
+      <li><strong>Random Forest:</strong> 0.400</li>
+    </ul>
+
+    <figure>
+      <img src="work/outputs/fig2_performance_comparison.png" alt="Precision@50: Model vs. Baseline">
+      <figcaption><strong>Figure 1:</strong> Performance comparison evaluated on unseen clients.</figcaption>
+    </figure>
+
+    <p>An audit of the feature importances revealed that the model leaned entirely on <code>gsc_impressions</code>. While a single dominant feature often suggests mathematical data leakage, our investigation proved this to be an artifact of the February 2025 dataset cohort: the GA4 session metrics lacked variance (zero-filled), leaving impressions as the sole predictive signal.</p>
+
+    <figure>
+      <img src="work/outputs/fig1_feature_importance.png" alt="Random Forest Feature Importances">
+      <figcaption><strong>Figure 2:</strong> Feature importances highlighting the lack of variance in GA4 fields for this cohort.</figcaption>
+    </figure>
   </section>
 
   <section>
     <h2>6. Limitations & Honest Framing</h2>
-    <p>[Content goes here]</p>
+    <p>In accordance with rigorous analysis standards, these findings provide <strong>directional decision-support</strong> rather than guaranteed causal outcomes. The observed metrics carry several known limitations that a human editor must consider:</p>
+    
+    <ul>
+      <li><strong>Non-Causal:</strong> The model flags pages associated with high visibility and poor click capture in this specific dataset. It does not prove that simply rewriting a meta title will cause an automatic increase in traffic.</li>
+      <li><strong>Intent Blindness:</strong> The algorithm relies entirely on numerical metrics and cannot read the actual Search Engine Results Page (SERP). It cannot numerically distinguish between a poorly written title and an unfixable zero-click query (e.g., a calculator snippet or dictionary definition).</li>
+      <li><strong>Data Availability Constraints:</strong> The 100% reliance on impression volume is a direct result of the zero-filled GA4 data within the selected cohort. This is a valid negative result: without behavioral variance, the ML model essentially functions as a smoothed probability version of the heuristic rule.</li>
+    </ul>
   </section>
 
   <section>

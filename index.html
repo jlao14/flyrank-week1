@@ -113,12 +113,22 @@
 
   <section>
     <h2>3. Baseline</h2>
-    <p>[Content goes here]</p>
+    <p>Before applying machine learning, we established a transparent, arithmetic rule-based heuristic. This baseline flags a page as needing an intervention if it meets the following observed criteria:</p>
+    <ul>
+      <li>Ranks on Page 1 (<code>gsc_avg_position</code> &lt;= 10)</li>
+      <li>Maintains minimum visibility (<code>gsc_impressions</code> &gt;= 50)</li>
+      <li>Shows poor click capture (<code>ctr</code> &lt;= 2.0%)</li>
+    </ul>
+    <p>This baseline provides a fair comparison because it acts as an honest, human-readable rule[cite: 2]. We evaluated its performance on the exact same data split and metric (Precision@K) as the machine learning model to measure true lift.</p>
   </section>
 
   <section>
     <h2>4. Methodology & Validation Design</h2>
-    <p>[Content goes here]</p>
+    <p><strong>Method & Label Definition:</strong> We framed this as a classification and ranking task. We defined a binary target label (<code>label_needs_fix</code>) set to 1 if a page ranked on Page 1 but yielded a CTR of 2.0% or less. We utilized a Random Forest Classifier because it natively outputs continuous probability scores (<code>.predict_proba()</code>), which are required to rank the final triage queue by confidence.</p>
+    
+    <p><strong>Feature Set:</strong> The predictive features were restricted to <code>gsc_impressions</code>, <code>ga4_sessions</code>, <code>sessions_organic</code>, and <code>sessions_direct</code>. As noted in our leakage audit, target-derived metrics were strictly omitted.</p>
+
+    <p><strong>Honest Validation Design:</strong> Standard random train/test splits are fundamentally dishonest for this dataset. Because the warehouse contains multiple daily records from the same clients, a random 80/20 split risks leaking a client's specific site-wide momentum from the training set into the test set. To rigorously validate the model's ability to generalize, we employed a <code>GroupShuffleSplit</code> grouped by <code>client_hash_id</code>. This ensures the model is evaluated exclusively on its ability to identify patterns on completely unseen client domains.</p>
   </section>
 
   <section>

@@ -165,19 +165,37 @@
     </ul>
   </section>
 
-  <section>
+<section>
     <h2>7. Ranked Recommendations (Action Playbook)</h2>
-    <p>[Content goes here]</p>
+    <p>The model outputs a probability-ranked queue designed to guide editorial focus. This playbook is specifically mapped to the <strong>"Leaky Bucket"</strong> archetype: pages that algorithmically flag for high search visibility but poor click capture.</p>
+    
+    <ul>
+      <li><strong>Recommended Action:</strong> Manual Meta Title and Description Review.</li>
+      <li><strong>Reason Code:</strong> <code>high_vis_poor_capture</code>.</li>
+    </ul>
+
+    <h3>Human Review Rules & The No-Go List</h3>
+    <p>This queue is a decision-support tool, not an automated oracle. The following guardrails apply:</p>
+    <ul>
+      <li><strong>Mandatory SERP Check:</strong> Before making CMS changes, a human editor MUST check the live search results to confirm the low CTR is due to a weak title, rather than an unfixable zero-click query (e.g., built-in calculators) or navigational brand search.</li>
+      <li><strong>No Automated Rewrites:</strong> Never pipe this queue directly into Generative AI tools to automatically rewrite and publish meta tags. The model cannot detect sensitive topics or nuanced brand voice.</li>
+    </ul>
   </section>
 
   <section>
     <h2>8. Reproducibility</h2>
-    <p>[Content goes here]</p>
+    <p>To ensure this analysis can be fully audited and reproduced from a fresh clone, all code, data access patterns, and environment seeds are standardized:</p>
+    <ul>
+      <li><strong>Repository Access:</strong> All assignment and modeling notebooks can be found in the <code>work/</code> directory of <a href="https://github.com/jlao14/flyrank-week1" target="_blank" rel="noopener">this GitHub repository</a>.</li>
+      <li><strong>Data Access:</strong> The data was streamed using the Python <code>datasets</code> library. A valid Hugging Face Read Token is required to access the gated <code>FlyRank/internship-warehouse</code> dataset.</li>
+      <li><strong>Execution Order:</strong> To reproduce the pipeline, execute <code>w05_model.ipynb</code> followed by <code>w07_action_playbook.ipynb</code>.</li>
+      <li><strong>Random Seeds:</strong> All dataset splits (<code>GroupShuffleSplit</code>) and Random Forest initializations are strictly locked to <code>random_state=42</code> to guarantee identical output probabilities upon re-running.</li>
+    </ul>
   </section>
 
   <footer>
     <hr>
-    <p>Built on the <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank ML Internship dataset</a>.</p>
+    <p>Built on the <a href="https://flyrank.ai" target="_blank" rel="noopener">FlyRank</a> ML Internship dataset.</p>
   </footer>
 </body>
 </html>

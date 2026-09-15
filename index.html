@@ -142,14 +142,14 @@
     </ul>
 
     <figure>
-      <img src="work/outputs/fig2_performance_comparison.png" alt="Precision@50: Model vs. Baseline">
+      <img src="outputs/fig2_performance_comparison.png" alt="Precision@50: Model vs. Baseline">
       <figcaption><strong>Figure 1:</strong> Performance comparison evaluated on unseen clients.</figcaption>
     </figure>
 
     <p>An audit of the feature importances revealed that the model leaned entirely on <code>gsc_impressions</code>. While a single dominant feature often suggests mathematical data leakage, our investigation proved this to be an artifact of the February 2025 dataset cohort: the GA4 session metrics lacked variance (zero-filled), leaving impressions as the sole predictive signal.</p>
 
     <figure>
-      <img src="work/outputs/fig1_feature_importance.png" alt="Random Forest Feature Importances">
+      <img src="outputs/fig1_feature_importance.png" alt="Random Forest Feature Importances">
       <figcaption><strong>Figure 2:</strong> Feature importances highlighting the lack of variance in GA4 fields for this cohort.</figcaption>
     </figure>
   </section>
